@@ -1,0 +1,34 @@
+hyperparameters = {
+    "train/batch_size": 16,
+    "train/accumulate_grad_batches": 1,
+    "train/k-fold": 5,
+    "train/max_epochs": 10,
+    "val/val_check_interval": 10,
+    "global/model": "albert-base-v2",
+    "global/tokenizer": "albert-base-v2",
+    "global/reinit_pool_layer": False,
+    "global/reinit_last_n_layer": 0,
+    "global/tokenizer_config": {
+        "return_tensors": "pt",
+        "padding": True,
+        "truncation": True,
+        "max_length": 256,
+    },
+    "train/mixout": 0,
+    "global/checkpoint": None,
+    "optim/lr": 8e-5,
+    "optim/weight_decay": 0,
+    "optim/cosine_lr": False,
+    "optim/layerwise_learning_rate_decay": 0.6,
+}
+
+sweep_config = {
+    "method": "bayes",
+    "metric": {  # We want to maximize val_acc
+        "name": "val/best_loss",
+        "goal": "minimize",
+    },
+    "parameters": {
+        "train_seed": {"values": [881, 47]},
+        "train_fold": {"values": [4, 3, 2, 1, 0]},
+    },

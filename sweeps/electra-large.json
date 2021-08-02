@@ -1,0 +1,33 @@
+sweep_config = {
+    "method": "grid",
+    "metric": {  # We want to maximize val_acc
+        "name": "val/best_loss",
+        "goal": "minimize",
+    },
+    "parameters": {
+        "train_seed": {"values": [47, 881]},
+        "train_fold": {"values": [0, 1, 2, 3, 4]},
+        "train_batch_size": 8,
+        "train_accumulate_grad_batches": 2,
+        "train_k-fold": 5,
+        "train_max_epochs": 20,
+        "val_val_check_interval": 10,
+        "global_model": "smeoni/electra-large-discriminator-clrp",
+        "global_tokenizer": "google/electra-base-discriminator",
+        "global_reinit_pool_layer": False,
+        "global_reinit_last_n_layer": 6,
+        "global_tokenizer_config": {
+            "return_tensors": "pt",
+            "padding": True,
+            "truncation": True,
+            "max_length": 256,
+        },
+        "train_mixout": 0,
+        "global_checkpoint": None,
+        "optim_lr": 8e-5,
+        "optim_cosine_lr": False,
+        "optim_weight_decay": 0,
+        "optim_layerwise_learning_rate_decay": 0.6,
+    },
+}
+hyperparameters = sweep_config["parameters"]

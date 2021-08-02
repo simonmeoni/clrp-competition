@@ -1,0 +1,25 @@
+seeds = [47, 881]
+hyperparameters = {
+    "train_batch_size": 24,
+    "train_accumulate_grad_batches": 1,
+    "train_k-fold": 5,
+    "train_max_epochs": 8,
+    "val_val_check_interval": 10,
+    "global_model": "facebook/muppet-roberta-base",
+    "global_tokenizer": "roberta-base",
+    "global_reinit_pool_layer": False,
+    "global_reinit_last_n_layer": 3,
+    "global_tokenizer_config": {
+        "return_tensors": "pt",
+        "padding": True,
+        "truncation": True,
+        "max_length": 256,
+    },
+    "train_augmented": True,
+    "train_mixout": 0.4,
+    "global_checkpoint": None,
+    "optim_lr": 5e-5,
+    "optim_cosine_lr": False,
+    "optim_weight_decay": 0,
+    "optim_layerwise_learning_rate_decay": 0.6,
+}

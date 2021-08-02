@@ -1,0 +1,32 @@
+{
+  "method": "grid",
+  "metric": {
+    "name": "val/best_loss",
+    "goal": "minimize"
+  },
+  "parameters": {
+    "train_seed": {"values": [47, 881]},
+    "train_fold": {"values": [0, 1, 2]},
+    "train_mixout": {"value": 0.4},
+    "train_batch_size": {"value": 24},
+    "train_accumulate_grad_batches": {"value": 1},
+    "train_k-fold": {"value": 5},
+    "train_max_epochs": {"value": 8},
+    "optim_lr": {"values": 8e-5},
+    "val_val_check_interval": {"value": 10},
+    "global_model": {"value": "smeoni/electra-base-discriminator-clrp"},
+    "global_tokenizer": {"value": "google/electra-base-discriminator"},
+    "global_reinit_pool_layer": {"value": false},
+    "global_reinit_last_n_layer": {"value": 3},
+    "global_tokenizer_config": {"value": {
+      "return_tensors": "pt",
+      "padding": true,
+      "truncation": true,
+      "max_length": 256
+    }},
+    "global_checkpoint": {"value": null},
+    "optim_cosine_lr": {"value": true},
+    "optim_weight_decay": {"value": 0},
+    "optim_layerwise_learning_rate_decay": {"value": 0.6}
+  }
+}
